@@ -1,0 +1,368 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Amazon India Dashboard</title>
+<style>
+:root{--bg:#eaeded;--card:#fff;--tx:#0f1111;--mu:#565959;--ln:#d5d9d9;--nav:#131921;--nav2:#232f3e;--acc:#ff9900;--acc2:#febd69;--lk:#007185;--c1:#ff9900;--c2:#146eb4;--c3:#067d62;--c4:#c7511f;--c5:#8b5cf6;--bad:#b12704;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+[data-th=ocean]{--nav:#0b2545;--nav2:#13315c;--acc:#00b4d8;--acc2:#90e0ef;--lk:#0077b6;--c1:#00b4d8;--c2:#0077b6;--c3:#2a9d8f;--c4:#f4a261;--c5:#7b2cbf}
+[data-th=sunset]{--nav:#3d0c4f;--nav2:#5a189a;--acc:#ff6d00;--acc2:#ffb703;--lk:#9d174d;--c1:#ff6d00;--c2:#e5383b;--c3:#9d4edd;--c4:#ffb703;--c5:#f72585}
+[data-th=forest]{--nav:#0b3d2e;--nav2:#14532d;--acc:#84cc16;--acc2:#d9f99d;--lk:#15803d;--c1:#22c55e;--c2:#0ea5e9;--c3:#eab308;--c4:#f97316;--c5:#a855f7}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1111;--card:#1b2127;--tx:#f0f2f2;--mu:#a7b0b0;--ln:#37424b}}
+:root[data-theme="dark"]{--bg:#0f1111;--card:#1b2127;--tx:#f0f2f2;--mu:#a7b0b0;--ln:#37424b}
+*{box-sizing:border-box}html,body{margin:0}body{background:var(--bg);color:var(--tx);font:14px/1.4 "Amazon Ember",Arial,sans-serif}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--nav);z-index:10}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--nav);color:#fff;display:flex;align-items:center;gap:14px;padding:8px 14px;flex-wrap:wrap}
+.logo{font-size:26px;font-weight:700;letter-spacing:-1px;position:relative;padding:0 4px 10px;line-height:1}.logo small{font-size:13px;font-weight:400;letter-spacing:0}
+.logo::after{content:"";position:absolute;left:6px;right:20px;bottom:4px;height:8px;border-bottom:3px solid var(--acc);border-radius:0 0 50% 50%}
+.dl{display:flex;flex-direction:column;font-size:11px;color:#ccc}.dl select{background:transparent;color:#fff;border:0;font-weight:700;font-size:13px;cursor:pointer;max-width:130px}.dl option,.sb option{color:#000}
+.sb{flex:1;min-width:240px;display:flex;border-radius:6px;overflow:hidden;height:40px}
+.sb select{background:#e6e6e6;border:0;padding:0 8px;max-width:150px;font-size:12px;color:#000;cursor:pointer}.sb input{flex:1;border:0;padding:0 12px;font-size:14px;min-width:60px}
+.sb button{background:var(--acc);border:0;width:46px;font-size:18px;cursor:pointer}
+.yr{display:flex;flex-direction:column;font-size:11px;color:#ccc}.yr select{background:transparent;color:#fff;border:0;font-weight:700;font-size:13px;cursor:pointer}.yr option{color:#000}
+nav{background:var(--nav2);display:flex;align-items:center;gap:2px;padding:0 10px;overflow-x:auto;position:sticky;top:calc(env(safe-area-inset-top,0px) + 0px);z-index:8}
+nav button{background:none;border:1px solid transparent;color:#fff;padding:10px 12px;cursor:pointer;font-size:14px;white-space:nowrap;border-radius:3px}
+nav button:hover,nav button.on{border-color:#fff}nav button.on{font-weight:700;box-shadow:inset 0 -3px var(--acc)}
+.th{margin-left:auto;display:flex;gap:6px;align-items:center;color:#ccc;font-size:12px;padding-left:10px}.th i{width:18px;height:18px;border-radius:50%;cursor:pointer;border:2px solid #fff;display:block}
+.fb{background:var(--card);border-bottom:1px solid var(--ln);padding:8px 14px;display:flex;gap:10px;flex-wrap:wrap;align-items:center;font-size:13px}
+.fb select{padding:5px 8px;border:1px solid var(--ln);border-radius:8px;background:var(--card);color:var(--tx);cursor:pointer}.fb .rs{background:var(--acc);border:0;border-radius:18px;padding:6px 14px;cursor:pointer;font-weight:600;color:#111}
+main{max-width:1400px;margin:0 auto;padding:14px}
+.hero{background:linear-gradient(100deg,var(--nav2),var(--c2));color:#fff;border-radius:8px;padding:18px 20px;margin-bottom:14px}.hero h1{margin:0 0 4px;font-size:22px}.hero p{margin:0;opacity:.9}
+.g{display:grid;gap:12px;margin-bottom:12px}.k{grid-template-columns:repeat(auto-fit,minmax(170px,1fr))}.two{grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr))}
+.c{background:var(--card);border:1px solid var(--ln);border-radius:8px;padding:14px;min-width:0}
+.c h3{margin:0 0 10px;font-size:16px}.kp{border-top:4px solid var(--acc)}.kp b{display:block;font-size:24px;margin:2px 0}.kp span{color:var(--mu);font-size:12px}
+.kp:nth-child(2){border-color:var(--c2)}.kp:nth-child(3){border-color:var(--c3)}.kp:nth-child(4){border-color:var(--c4)}.kp:nth-child(5){border-color:var(--c5)}.kp:nth-child(6){border-color:var(--c1)}
+.ht{height:300px;position:relative}
+.ins{background:color-mix(in srgb,var(--acc2) 30%,var(--card));border-left:5px solid var(--acc);padding:10px 14px;border-radius:6px;margin-bottom:12px}.ins b{color:var(--lk)}
+.pr{display:flex;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid var(--ln)}.pr:last-child{border:0}
+.rk{background:var(--acc);color:#111;font-weight:700;border-radius:4px;min-width:26px;text-align:center;padding:2px 0}.pi{flex:1;min-width:0}.pi a{color:var(--lk);font-weight:600}.pi small{color:var(--mu);display:block}
+.bar{height:6px;background:var(--ln);border-radius:3px;margin-top:4px}.bar i{display:block;height:100%;background:var(--c1);border-radius:3px}
+.pv{text-align:right;white-space:nowrap}.pv small{display:block;color:var(--mu)}.bd{background:var(--bad);color:#fff;font-size:11px;border-radius:3px;padding:1px 6px}.ok{background:var(--c3);color:#fff;font-size:11px;border-radius:3px;padding:1px 6px}
+table{width:100%;border-collapse:collapse}th,td{padding:7px 6px;text-align:right;border-bottom:1px solid var(--ln)}th:first-child,td:first-child{text-align:left}th{color:var(--mu);font-weight:600;font-size:12px}
+.seg{display:inline-flex;border:1px solid var(--ln);border-radius:18px;overflow:hidden;float:right}.seg button{border:0;background:none;color:var(--tx);padding:4px 12px;cursor:pointer}.seg button.on{background:var(--acc);font-weight:700;color:#111}
+.nt{color:var(--mu);font-size:12px;text-align:center;padding:10px}section{display:none}section.on{display:block}
+
+:root:not([data-theme="light"]){--bg:#0a0e1f;--card:rgba(255,255,255,.07);--tx:#f4f6ff;--mu:#aab3d6;--ln:rgba(255,255,255,.14)}
+body{background:radial-gradient(60% 50% at 8% 0%,color-mix(in srgb,var(--c2) 45%,transparent),transparent),radial-gradient(50% 50% at 95% 10%,color-mix(in srgb,var(--c5) 40%,transparent),transparent),radial-gradient(60% 60% at 50% 100%,color-mix(in srgb,var(--c1) 30%,transparent),transparent),#0a0e1f;background-attachment:fixed}
+body::before{background:#0a0e1f}
+header{background:rgba(10,14,31,.78);backdrop-filter:blur(14px);border-bottom:2px solid transparent;border-image:linear-gradient(90deg,var(--c1),var(--c2),var(--c3),var(--c5)) 1}
+nav{background:transparent;padding:10px 14px;gap:8px}nav button{border-radius:999px;border:1px solid var(--ln);background:rgba(255,255,255,.06)}
+nav button.on{background:linear-gradient(90deg,var(--c1),var(--c2));border-color:transparent;box-shadow:0 4px 18px color-mix(in srgb,var(--c1) 50%,transparent)}
+.fb{background:rgba(255,255,255,.05);backdrop-filter:blur(10px);border-color:var(--ln)}.fb select{background:#141a33;color:#fff}select option{background:#141a33;color:#fff}
+.c{backdrop-filter:blur(12px);border-radius:18px;transition:transform .2s,box-shadow .2s}.c:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(0,0,0,.4)}
+.kp{border:0!important;color:#fff;position:relative;overflow:hidden}.kp span{color:rgba(255,255,255,.88)}.kp::after{content:"";position:absolute;right:-28px;top:-28px;width:100px;height:100px;border-radius:50%;background:rgba(255,255,255,.18)}
+.kp:nth-child(1){background:linear-gradient(135deg,var(--c1),color-mix(in srgb,var(--c1) 35%,#300))}.kp:nth-child(2){background:linear-gradient(135deg,var(--c2),color-mix(in srgb,var(--c2) 35%,#102))}.kp:nth-child(3){background:linear-gradient(135deg,var(--c3),color-mix(in srgb,var(--c3) 35%,#012))}
+.kp:nth-child(4){background:linear-gradient(135deg,var(--c4),color-mix(in srgb,var(--c4) 35%,#300))}.kp:nth-child(5){background:linear-gradient(135deg,var(--c5),color-mix(in srgb,var(--c5) 35%,#102))}.kp:nth-child(6){background:linear-gradient(135deg,var(--c2),var(--c5))}
+.ins{background:rgba(255,255,255,.08);border-left-color:var(--c1);border-radius:12px}.ins b{color:var(--c1)}.pi a{color:var(--c1)}.seg button{color:#fff}.seg button.on{color:#111}
+.hero{background:linear-gradient(120deg,var(--c1),var(--c5),var(--c2),var(--c3));background-size:300% 300%;animation:sh 12s ease infinite;border-radius:20px;padding:26px}.hero h1{font-size:28px}@keyframes sh{50%{background-position:100% 50%}}
+.us{display:flex;align-items:center;gap:8px;margin-left:auto}#av{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--c1),var(--c5));display:grid;place-items:center;font-weight:700}.us small{display:block;color:#ccc;font-size:11px}.us button{background:none;border:1px solid var(--ln);color:#fff;border-radius:16px;padding:5px 12px;cursor:pointer}
+#lg{position:fixed;inset:0;z-index:100;display:flex;background:#0a0e1f;overflow:auto}#lg.off{display:none}
+.lL{flex:1.2;position:relative;overflow:hidden;padding:48px;display:flex;flex-direction:column;justify-content:center;color:#fff}
+.orb{position:absolute;border-radius:50%;filter:blur(70px);opacity:.65;animation:fl 9s ease-in-out infinite alternate}@keyframes fl{to{transform:translate(70px,-40px) scale(1.25)}}
+.lL>*{position:relative}.lL .logo{font-size:34px;align-self:flex-start}.lL h2{font-size:clamp(28px,4vw,48px);line-height:1.1;margin:18px 0 8px}
+.lL h2 span{background:linear-gradient(90deg,#ff9900,#ff3d81,#7c4dff,#00d4ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.mb{display:flex;gap:8px;align-items:flex-end;height:120px;margin-top:26px;max-width:420px}.mb i{flex:1;border-radius:6px 6px 0 0;background:linear-gradient(#ffb703,#ff3d81 60%,#7c4dff);animation:gr 2.4s ease-in-out infinite alternate;transform-origin:bottom}@keyframes gr{from{transform:scaleY(.3)}}
+.chs{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.chs span{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);border-radius:20px;padding:6px 14px;animation:bob 3s ease-in-out infinite alternate}@keyframes bob{to{transform:translateY(-8px)}}
+.lR{flex:1;display:grid;place-items:center;padding:24px;min-width:min(100%,380px)}
+.lc{width:100%;max-width:400px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.22);backdrop-filter:blur(20px);border-radius:24px;padding:30px;color:#fff;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.lc h3{margin:0 0 4px;font-size:24px}.lc p{margin:0 0 16px;color:#b8c0e6}.lc input{width:100%;padding:12px 14px;margin-bottom:10px;border-radius:12px;border:1px solid rgba(255,255,255,.25);background:rgba(0,0,0,.3);color:#fff;font-size:14px}
+.pb,.gb{width:100%;padding:12px;border-radius:12px;border:0;font-size:15px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px}
+.pb{background:linear-gradient(90deg,#ff9900,#ff3d81,#7c4dff);color:#fff}.gb{background:#fff;color:#222}.dv{text-align:center;color:#8f99c4;margin:14px 0;font-size:12px}
+.er{color:#ff8a8a;font-size:13px;min-height:18px;margin-bottom:6px}.sm{font-size:11px;color:#8f99c4;margin-top:14px;text-align:center}
+#gm{position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;place-items:center;z-index:101;padding:16px}#gm.on{display:grid}
+.gc{background:#fff;color:#202124;border-radius:12px;padding:28px;width:100%;max-width:400px}.gc h4{margin:8px 0 2px;font-size:22px;font-weight:400}.gc input{background:#fff;color:#202124;border:1px solid #dadce0}
+.ac{display:flex;gap:12px;align-items:center;width:100%;background:none;border:0;border-top:1px solid #eee;padding:10px 4px;cursor:pointer;text-align:left;font-size:14px;color:#202124}.ac i{width:32px;height:32px;border-radius:50%;background:#7c4dff;color:#fff;display:grid;place-items:center;font-style:normal}.ac small{display:block;color:#5f6368}
+@media(max-width:800px){#lg{flex-direction:column}.lL{flex:none;padding:28px}}
+
+nav{position:static}
+select{color-scheme:dark}
+select option,.dl option,.yr option,.sb option,.fb option{background:#141a33!important;color:#fff!important}
+select option:checked,select option:hover{background:var(--acc)!important;color:#111!important}
+.dl select,.yr select{background:rgba(255,255,255,.1);border-radius:8px;padding:3px 6px}
+.sb select{color-scheme:light}.sb select option{background:#fff!important;color:#111!important}
+.ys{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:10px}
+.ys button{border:2px solid transparent;border-radius:16px;padding:12px;color:#fff;text-align:left;cursor:pointer;font:inherit;background:linear-gradient(135deg,var(--c1),var(--c5));transition:transform .2s}
+.ys button:nth-child(2){background:linear-gradient(135deg,var(--c2),var(--c3))}.ys button:nth-child(3){background:linear-gradient(135deg,var(--c5),var(--c2))}.ys button:nth-child(4){background:linear-gradient(135deg,var(--c4),var(--c1))}
+.ys button:hover{transform:translateY(-2px)}.ys button.on{border-color:#fff;box-shadow:0 0 0 3px color-mix(in srgb,var(--c1) 60%,transparent)}
+.ys b{display:block;font-size:18px}.ys small{opacity:.9}
+.af{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:12px;font-size:13px}
+.af span{background:rgba(255,255,255,.12);border:1px solid var(--ln);border-radius:16px;padding:4px 12px;cursor:pointer}.af span:hover{background:var(--bad)}
+.af.em{background:rgba(177,39,4,.35);border-radius:10px;padding:10px 14px}.af button{background:var(--acc);border:0;border-radius:14px;padding:4px 12px;cursor:pointer;font-weight:700}
+
+section{display:none!important}
+.bc{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:14px;color:var(--mu)}.bc a{color:var(--c1);cursor:pointer;font-weight:600}.bc a:hover{text-decoration:underline}.bc b{color:var(--tx)}
+.bkb,.chips button,.pn button{background:rgba(255,255,255,.08);border:1px solid var(--ln);color:#fff;border-radius:999px;padding:7px 16px;cursor:pointer;font:inherit}.bkb:hover,.chips button:hover,.pn button:hover:not(:disabled){background:rgba(255,255,255,.18)}
+.st1{margin-bottom:16px}.st1 h2{margin:0 0 4px;font-size:24px}.mu{color:var(--mu)}
+.tl{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));margin-bottom:14px}.tl.big{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.tile{text-align:left;color:#fff;border:1px solid var(--ln);border-radius:18px;padding:18px;cursor:pointer;font:inherit;background:var(--card);backdrop-filter:blur(12px);display:flex;flex-direction:column;gap:6px;min-height:150px;transition:transform .2s,box-shadow .2s,border-color .2s}
+.tile:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(0,0,0,.4);border-color:var(--c1)}
+.tile b{font-size:15px}.tile em{font-style:normal;font-size:22px;font-weight:700;color:var(--c1);overflow-wrap:anywhere}.tile small{color:var(--mu)}.tile .op{margin-top:auto;font-size:12px;color:var(--c2);font-weight:600}
+.tn{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,var(--c1),var(--c5));font-weight:700;font-size:13px}
+.big .tile{min-height:220px}.big .tile b{font-size:18px}.big .tile em{font-size:30px}
+.dh{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:flex-end;margin-bottom:14px}.dh h2{margin:0;font-size:26px}.bgv{font-size:30px;font-weight:700;background:linear-gradient(90deg,var(--c1),var(--c5));-webkit-background-clip:text;background-clip:text;color:transparent}
+.chips{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:12px;color:var(--mu)}.chips button.on{background:linear-gradient(90deg,var(--c1),var(--c2));border-color:transparent}
+.pn{display:flex;justify-content:space-between;margin-top:16px}.pn button:disabled{opacity:.3;cursor:default}
+tr.cl{cursor:pointer}tr.cl:hover td{background:rgba(255,255,255,.08)}.tip{color:var(--mu);font-size:12px;margin-top:8px}
+.th{display:none!important}
+.tm{position:relative}.tm>button{background:rgba(255,255,255,.1);border:1px solid var(--ln);color:#fff;border-radius:999px;padding:8px 14px;cursor:pointer;font:inherit;display:flex;align-items:center;gap:6px}.tm>button:hover{background:rgba(255,255,255,.2)}
+.tm>button i{width:16px;height:16px;border-radius:50%;border:2px solid #fff;display:block}
+.tp{display:none;position:absolute;right:0;top:calc(100% + 10px);background:#141a33;border:1px solid var(--ln);border-radius:14px;padding:8px;min-width:230px;z-index:30;box-shadow:0 16px 40px rgba(0,0,0,.5)}.tp.on{display:block}
+.tp small{display:block;color:var(--mu);padding:4px 10px 6px;font-size:11px;text-transform:uppercase;letter-spacing:.06em}
+.tp button{display:flex;align-items:center;gap:10px;width:100%;background:none;border:0;color:#fff;padding:9px 10px;border-radius:8px;cursor:pointer;font:inherit;text-align:left}.tp button:hover{background:rgba(255,255,255,.1)}.tp button.sel{background:rgba(255,255,255,.15);font-weight:700}
+.tp .sw{display:flex}.tp .sw i{width:16px;height:16px;border-radius:50%;border:2px solid #141a33;margin-left:-5px}.tp .sw i:first-child{margin-left:0}.tp .ck{margin-left:auto;opacity:0}.tp .sel .ck{opacity:1}
+
+#startup{position:fixed;inset:0;z-index:200;display:grid;place-items:center;overflow:auto;padding:28px;background:radial-gradient(ellipse at 15% 12%,rgba(255,153,0,.28),transparent 34%),radial-gradient(ellipse at 85% 85%,rgba(124,77,255,.34),transparent 38%),#090d1c;color:#f7f8ff;transition:opacity .35s ease,visibility .35s ease}
+#startup.done{opacity:0;visibility:hidden;pointer-events:none}.startup-glow{position:absolute;width:380px;height:380px;border-radius:50%;filter:blur(90px);background:rgba(255,153,0,.18);top:-150px;left:-100px;pointer-events:none}
+.startup-card{position:relative;width:min(760px,100%);padding:clamp(28px,6vw,58px);border:1px solid rgba(255,255,255,.16);border-radius:30px;background:linear-gradient(145deg,rgba(255,255,255,.10),rgba(255,255,255,.035));box-shadow:0 28px 90px rgba(0,0,0,.42);backdrop-filter:blur(22px);text-align:left}
+.startup-brand{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:800;letter-spacing:.12em}.startup-brand small{margin-left:auto;color:#9da8ce;font-size:10px;letter-spacing:.16em}.startup-mark{display:grid;place-items:center;width:34px;height:34px;border-radius:11px;background:linear-gradient(135deg,#ff9900,#ff3d81,#7c4dff);font-size:21px;letter-spacing:0}
+.startup-eyebrow{margin-top:54px;color:#ffbd69;font-size:11px;font-weight:800;letter-spacing:.22em}.startup-card h1{margin:12px 0;font-size:clamp(38px,7vw,66px);line-height:1.02;letter-spacing:-.045em}.startup-card h1 span{background:linear-gradient(90deg,#ffb347,#ff4d91,#a78bfa,#5ee7f5);-webkit-background-clip:text;background-clip:text;color:transparent}
+.startup-copy{max-width:570px;margin:18px 0 24px;color:#c2c9e3;font-size:16px;line-height:1.7}.startup-features{display:flex;gap:9px;flex-wrap:wrap}.startup-features span{padding:8px 13px;border:1px solid rgba(255,255,255,.16);border-radius:999px;background:rgba(255,255,255,.06);font-size:12px;color:#e4e8fb}
+.startup-progress{height:5px;margin-top:36px;overflow:hidden;border-radius:9px;background:rgba(255,255,255,.12)}.startup-progress i{display:block;width:40%;height:100%;border-radius:9px;background:linear-gradient(90deg,#ff9900,#ff3d81,#7c4dff);animation:startupLoad 1.5s ease-in-out infinite}@keyframes startupLoad{0%{transform:translateX(-110%)}100%{transform:translateX(260%)}}
+.startup-status{margin-top:12px;color:#aeb8dc;font-size:12px}.startup-error{margin-top:14px;padding:12px 14px;border:1px solid rgba(255,120,120,.35);border-radius:12px;background:rgba(177,39,4,.18);color:#ffd0d0;font-size:13px;line-height:1.5}.startup-footer{margin-top:34px;color:#7884ac;font-size:10px;letter-spacing:.16em}.startup-footer b{color:#c7cdea}@media(max-width:600px){.startup-card{padding:28px 22px}.startup-eyebrow{margin-top:38px}.startup-brand small{display:none}.startup-copy{font-size:14px}}
+</style></head><body><div id="startup" role="status" aria-live="polite"><div class="startup-glow"></div><div class="startup-card"><div class="startup-brand"><span class="startup-mark">A</span><span>AMAZON INDIA</span><small>SALES INTELLIGENCE</small></div><div class="startup-eyebrow">BUSINESS ANALYTICS PLATFORM</div><h1>Amazon India<br><span>Sales Dashboard</span></h1><p class="startup-copy">A unified view of sales, profit, orders, products, payments, fulfilment and regional performance.</p><div class="startup-features"><span>₹ Sales &amp; Profit</span><span>Product Insights</span><span>Order Analytics</span><span>State-wise Reports</span></div><div class="startup-progress"><i></i></div><div class="startup-status" id="startupStatus">Checking your secure session and loading dashboard data…</div><div class="startup-error" id="startupError" hidden></div><div class="startup-footer">POWERED BY <b>PYTHON · FLASK · PANDAS</b></div></div></div><div id="lg"><div class="lL"><div class="orb" style="width:340px;height:340px;background:#ff9900;top:-80px;left:-60px"></div><div class="orb" style="width:380px;height:380px;background:#7c4dff;bottom:-120px;right:-80px;animation-delay:-3s"></div><div class="orb" style="width:260px;height:260px;background:#00d4ff;top:40%;left:45%;animation-delay:-6s"></div>
+<div class="logo">amazon<small>.in</small></div><h2>Your whole business, in <span>one colourful view</span></h2><div style="color:#c9d0f0;max-width:440px">Sales, profit, orders, products, payments and states. Simple enough for any manager to read in seconds.</div><div class="mb"><i style="height:45%;animation-delay:0.0s"></i><i style="height:70%;animation-delay:0.3s"></i><i style="height:55%;animation-delay:0.6s"></i><i style="height:85%;animation-delay:0.8999999999999999s"></i><i style="height:65%;animation-delay:1.2s"></i><i style="height:95%;animation-delay:1.5s"></i><i style="height:75%;animation-delay:1.7999999999999998s"></i><i style="height:100%;animation-delay:2.1s"></i></div><div class="chs"><span>&#128176; Sales</span><span>&#128200; Profit</span><span>&#128230; Orders</span><span>&#128205; States</span></div></div>
+<div class="lR"><div class="lc"><h3>Welcome back &#128075;</h3><p>Sign in to open the Amazon India dashboard</p>
+<button class="gb" id="gg"><svg width="18" height="18" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.6l6.8-6.8C35.8 2.4 30.3 0 24 0 14.6 0 6.5 5.4 2.6 13.2l7.9 6.1C12.4 13.6 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.5 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.7c-.6 3-2.3 5.5-4.8 7.2l7.5 5.8c4.4-4.1 7.1-10.1 7.1-17.5z"/><path fill="#FBBC05" d="M10.5 28.7c-.5-1.4-.8-3-.8-4.7s.3-3.2.8-4.7l-7.9-6.1C.9 16.4 0 20.1 0 24s.9 7.6 2.6 10.8l7.9-6.1z"/><path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.9-5.8l-7.5-5.8c-2.1 1.4-4.8 2.3-8.4 2.3-6.3 0-11.6-4.100-13.500-9.800l-7.900 6.100C6.500 42.600 14.600 48 24 48z"/></svg> Continue with Google</button><div class="dv">&#8212; or sign in with your Gmail &#8212;</div>
+<input id="le" type="email" placeholder="yourname@gmail.com" autocomplete="off"><input id="lp" type="password" placeholder="Password (min 6 characters)"><div class="er" id="er"></div><button class="pb" id="ls">Sign in</button><button id="authToggle" type="button" style="width:100%;margin-top:10px;background:transparent;border:1px solid rgba(255,255,255,.3);color:#fff;border-radius:12px;padding:10px;cursor:pointer">Create account</button>
+<div class="sm">Your account is authenticated by the Flask backend. Passwords are securely hashed.</div></div></div></div>
+</div>
+<header><div class="logo">amazon<small>.in</small></div>
+<label class="dl">Deliver to<select id="fS"></select></label>
+<div class="sb"><select id="fC"></select><input id="q" placeholder="Search products e.g. Saree, Mixer, Smartwatch"><button title="Search">&#128269;</button></div>
+<label class="yr">Year<select id="fY"><option value="all">All years</option><option>2024</option><option>2025</option><option>2026</option></select></label><div class="tm" id="tm"><button id="tmb" aria-haspopup="true">Theme <i id="tmd"></i> &#9662;</button><div class="tp" id="themePicker"></div></div><div class="us" id="us"><div id="av">?</div><div><b id="un"></b><small id="ue"></small></div><button id="lo">Sign out</button></div></header>
+<nav id="nv"></nav>
+<div class="fb">Filters: <label>Payment <select id="fP"></select></label><label>Fulfilment <select id="fF"></select></label><button class="rs" id="rs">Reset filters</button><span id="cnt" style="color:var(--mu)"></span></div>
+<main><div class="ys" id="ys"></div><div class="af" id="af"></div><div class="hero"><h1>Welcome back, <span id="hn"></span> &#128075;</h1><h1 style="font-size:16px;font-weight:400;margin-bottom:6px">Amazon India Management Dashboard</h1><p>Sales, profit, products, orders, payments, fulfilment and states in one place. Click any option to open its details, then keep clicking to go deeper. The filters above update everything.</p></div>
+<div id="v2"></div><section id="p0"><div class="g k" id="k0"></div><div class="ins" id="i0"></div><div class="g"><div class="c"><h3>Monthly Sales &amp; Profit Trend</h3><div class="ht" style="height:340px"><canvas id="tr"></canvas></div></div></div></section>
+<section id="p1"><div class="ins" id="i1"></div><div class="g two"><div class="c"><h3>Category-wise Sales</h3><div class="ht"><canvas id="cs"></canvas></div></div><div class="c"><h3>Category-wise Profit</h3><div class="ht"><canvas id="cp"></canvas></div></div><div class="c"><h3>Category-wise Units Sold</h3><div class="ht"><canvas id="cu"></canvas></div></div>
+<div class="c"><h3>Needs attention (lowest profit margin)</h3><div id="lw"></div></div></div><div class="c"><h3>&#127942; Top 10 Products by Sales</h3><div id="topProducts"></div></div></section>
+<section id="p2"><div class="g k" id="k2"></div><div class="ins" id="i2"></div><div class="g two"><div class="c"><h3>Orders by Status</h3><div class="ht"><canvas id="os"></canvas></div></div><div class="c"><h3>Category-wise Returns &amp; Cancellations</h3><div class="ht"><canvas id="rc"></canvas></div></div></div><div class="c"><h3>Returns &amp; Cancellation rate by Category</h3><div id="rt"></div></div></section>
+<section id="p3"><div class="ins" id="i3"></div><div class="g two"><div class="c"><h3>Sales by Payment Method</h3><div class="ht"><canvas id="ps"></canvas></div></div><div class="c"><h3>Profit by Payment Method</h3><div class="ht"><canvas id="pp"></canvas></div></div><div class="c"><h3>Sales by Fulfilment Method</h3><div class="ht"><canvas id="fs"></canvas></div></div><div class="c"><h3>Profit by Fulfilment Method</h3><div class="ht"><canvas id="fp"></canvas></div></div></div>
+<div class="g two"><div class="c"><h3>State-wise Performance <span class="seg" id="sg"><button data-m="s" class="on">Sales</button><button data-m="p">Profit</button><button data-m="o">Orders</button></span></h3><div class="ht" style="height:360px"><canvas id="st"></canvas></div></div><div class="c"><h3>State-wise Sales, Profit &amp; Orders</h3><div id="stt"></div></div></div></section>
+<div class="nt">Source: Amazon Sales Data India. Total Sales includes every order placed; cancelled and returned orders carry zero profit. Amounts in &#8377; (L = lakh, Cr = crore).</div>
+</main>
+<script src="https://accounts.google.com/gsi/client" async defer></script><script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script>
+async function api(url, options={}) {
+  const opts = {...options, credentials:'same-origin', headers:{'Content-Type':'application/json', ...(options.headers||{})}};
+  const response = await fetch(url, opts);
+  const payload = await response.json().catch(()=>({error:'The server returned an invalid response.'}));
+  if (!response.ok) throw new Error(payload.error || `Request failed (${response.status})`);
+  return payload;
+}
+let authMode = 'login';
+let googleClientId = '';
+function setAuthMessage(message='') { document.getElementById('er').textContent = message; }
+async function startDashboard(user) {
+  window.__CURRENT_USER__ = user;
+  const splash = document.getElementById('startup');
+  const status = document.getElementById('startupStatus');
+  const splashError = document.getElementById('startupError');
+  splash.classList.remove('done'); splashError.hidden = true;
+  status.textContent = 'Signed in. Loading sales records, charts and dashboard modules…';
+  document.getElementById('lg').classList.add('off');
+  document.getElementById('us').style.display = 'flex';
+  document.getElementById('av').textContent = (user.name || user.email || '?').charAt(0).toUpperCase();
+  document.getElementById('un').textContent = user.name || 'User';
+  document.getElementById('ue').textContent = user.email || '';
+  document.getElementById('hn').textContent = (user.name || 'User').split(' ')[0];
+  if (!window.__DASHBOARD_STARTED__) {
+    window.__DASHBOARD_STARTED__ = true;
+    try { await bootDashboard(); status.textContent = 'Dashboard ready.'; splash.classList.add('done'); }
+    catch (error) {
+      window.__DASHBOARD_STARTED__ = false;
+      status.textContent = 'The dashboard could not finish loading.';
+      splashError.textContent = 'Loading error: ' + (error && error.message ? error.message : String(error)) + ' — Check the browser Console (F12) and confirm the Flask server is still running.';
+      splashError.hidden = false;
+      document.getElementById('lg').classList.remove('off');
+      setAuthMessage(error.message || 'Dashboard loading failed.');
+      splash.classList.add('done');
+    }
+  } else splash.classList.add('done');
+}
+async function loadGoogleConfig() {
+  try {
+    const config = await api('/api/config');
+    googleClientId = config.googleClientId || '';
+    const button = document.getElementById('gg');
+    if (!config.googleEnabled) button.title = 'Google sign-in is not configured. Use email and password.';
+  } catch (_) {}
+}
+document.addEventListener('DOMContentLoaded', async () => {
+  document.getElementById('us').style.display = 'none';
+  await loadGoogleConfig();
+  try {
+    const result = await api('/api/me');
+    if (result.user) await startDashboard(result.user);
+    else document.getElementById('startup').classList.add('done');
+  } catch (error) { setAuthMessage(error.message); document.getElementById('startup').classList.add('done'); }
+  document.getElementById('authToggle').addEventListener('click', () => {
+    authMode = authMode === 'login' ? 'register' : 'login';
+    document.getElementById('ls').textContent = authMode === 'login' ? 'Sign in' : 'Create account';
+    document.getElementById('authToggle').textContent = authMode === 'login' ? 'Create account' : 'I already have an account';
+    setAuthMessage('');
+  });
+  async function submitAuth() {
+    const email = document.getElementById('le').value.trim();
+    const password = document.getElementById('lp').value;
+    setAuthMessage('');
+    if (!email || !password) return setAuthMessage('Enter your email and password.');
+    try {
+      await api(authMode === 'login' ? '/api/auth/login' : '/api/auth/register', {
+        method:'POST', body:JSON.stringify({email, password})
+      });
+      const result = await api('/api/me');
+      if (result.user) await startDashboard(result.user);
+    } catch (error) { setAuthMessage(error.message); }
+  }
+  document.getElementById('ls').addEventListener('click', submitAuth);
+  document.getElementById('lp').addEventListener('keydown', e => { if (e.key === 'Enter') submitAuth(); });
+  document.getElementById('lo').addEventListener('click', async () => {
+    try { await api('/api/auth/logout', {method:'POST'}); }
+    finally { window.location.reload(); }
+  });
+  document.getElementById('gg').addEventListener('click', () => {
+    if (!googleClientId) return setAuthMessage('Google sign-in is not configured. Add GOOGLE_CLIENT_ID on the server, or use email and password.');
+    const waitForGoogle = () => {
+      if (!window.google?.accounts?.id) return setTimeout(waitForGoogle, 150);
+      window.google.accounts.id.initialize({client_id:googleClientId, callback: async response => {
+        try {
+          await api('/api/auth/google', {method:'POST', body:JSON.stringify({credential:response.credential})});
+          const result = await api('/api/me');
+          if (result.user) await startDashboard(result.user);
+        } catch (error) { setAuthMessage(error.message); }
+      }});
+      window.google.accounts.id.prompt();
+    };
+    waitForGoogle();
+  });
+});
+</script><script>async function bootDashboard(){
+
+const D=await api('/api/data'),R=D.r,$=s=>document.querySelector(s),F={y:'all',c:-1,t:-1,p:-1,f:-1,q:''};
+const num=n=>Math.round(n).toLocaleString('en-IN'),inr=n=>'\u20B9'+(n>=1e7?(n/1e7).toFixed(2)+' Cr':n>=1e5?(n/1e5).toFixed(2)+' L':num(n)),pc=(a,b)=>b?(a/b*100).toFixed(1)+'%':'0%';
+const cv=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim(),PAL=()=>[1,2,3,4,5].map(i=>cv('--c'+i));
+const MN=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],ml=m=>MN[+m.slice(5)-1]+' '+m.slice(2,4);
+let cur=0,SM='s',CH={},ROWS=[];
+function fill(id,list,all){$(id).innerHTML=`<option value="-1">${all}</option>`+list.map((x,i)=>`<option value="${i}">${x}</option>`).join('')}
+fill('#fC',D.c,'All Categories');fill('#fS',D.t,'All India');fill('#fP',D.y,'All payment methods');fill('#fF',D.f,'All fulfilment methods');
+const tabs=['Overview','Category & Products','Order Status','Payment, Fulfilment & Geography'];
+$('#nv').innerHTML=tabs.map((t,i)=>`<button data-i="${i}">${['\u2630 ','','',''][i]}${t}</button>`).join('')+'<div class="th">Theme '+[['amazon','#ff9900'],['ocean','#00b4d8'],['sunset','#ff6d00'],['forest','#22c55e']].map(t=>`<i data-t="${t[0]}" title="${t[0]}" style="background:${t[1]}"></i>`).join('')+'</div>';
+$('#nv').onclick=e=>{const b=e.target.closest('button');if(b){cur=+b.dataset.i;draw()}const t=e.target.dataset.t;if(t){document.documentElement.dataset.th=t;draw()}};
+[['#fY','y'],['#fC','c'],['#fS','t'],['#fP','p'],['#fF','f']].forEach(([s,k])=>$(s).onchange=e=>{F[k]=k=='y'?e.target.value:+e.target.value;draw()});
+$('#q').oninput=e=>{F.q=e.target.value.trim().toLowerCase();draw()};
+$('#rs').onclick=()=>{Object.assign(F,{y:'all',c:-1,t:-1,p:-1,f:-1,q:''});['#fC','#fS','#fP','#fF'].forEach(s=>$(s).value=-1);$('#fY').value='all';$('#q').value='';draw()};
+$('#sg').onclick=e=>{if(e.target.dataset.m){SM=e.target.dataset.m;document.querySelectorAll('#sg button').forEach(b=>b.classList.toggle('on',b==e.target));draw()}};
+const filt=(sy)=>R.filter(r=>(sy||F.y=='all'||D.m[r[0]].startsWith(F.y))&&(F.c<0||r[1]==F.c)&&(F.t<0||r[9]==F.t)&&(F.p<0||r[6]==F.p)&&(F.f<0||r[7]==F.f)&&(!F.q||F.q.split(" ").every(w=>H(r).includes(w))));
+function grp(rows,k,n){const a=Array.from({length:n},()=>({s:0,p:0,q:0,o:0}));rows.forEach(r=>{const x=a[r[k]];x.s+=r[4];x.p+=r[5];x.q+=r[3];x.o++});return a}
+const srt=(a,key)=>a.map((x,i)=>i).filter(i=>a[i].o).sort((i,j)=>a[j][key]-a[i][key]);
+function ch(id,type,labels,sets,o={}){CH[id]&&CH[id].destroy();const P=PAL(),h=!!o.h,mf=o.n?num:inr,dn=type=='doughnut';
+sets.forEach(s=>{if(!s.backgroundColor)s.backgroundColor=(dn||s.multi)?labels.map((_,i)=>P[i%5]):P[0]});
+const val={ticks:{callback:v=>mf(v)},grid:{color:cv('--ln')}},cat={grid:{display:false}};
+CH[id]=new Chart($('#'+id),{type,data:{labels,datasets:sets},options:{responsive:true,maintainAspectRatio:false,indexAxis:h?'y':'x',color:cv('--mu'),
+plugins:{legend:{display:sets.length>1||dn,position:'bottom'},tooltip:{callbacks:{label:c=>' '+(dn?c.label:c.dataset.label||'')+': '+mf(typeof c.parsed=='number'?c.parsed:(h?c.parsed.x:c.parsed.y))}}},
+scales:dn?{}:{x:Object.assign({},h?val:cat),y:Object.assign({},h?cat:val)}}})}
+const K=(l,v,s)=>`<div class="c kp"><span>${l}</span><b>${v}</b><span>${s||'&nbsp;'}</span></div>`;
+function prodList(arr,idx,max){return idx.map((i,n)=>{const x=arr[i];return `<div class="pr"><div class="rk">${n+1}</div><div class="pi"><a>${D.p[i]}</a><small>${D.c[D.pc[i]]}</small><div class="bar"><i style="width:${max?x.s/max*100:0}%"></i></div></div><div class="pv"><b>${inr(x.s)}</b><small>${num(x.q)} units &middot; margin ${pc(x.p,x.s)}</small></div></div>`}).join('')}
+function draw(){const rows=filt();ROWS=rows;$('#cnt').textContent=num(rows.length)+' orders match';
+document.querySelectorAll('section').forEach((s,i)=>s.classList.toggle('on',i==cur));document.querySelectorAll('#nv button').forEach(b=>b.classList.toggle('on',+b.dataset.i==cur));
+const S=rows.reduce((a,r)=>a+r[4],0),Pf=rows.reduce((a,r)=>a+r[5],0),Q=rows.reduce((a,r)=>a+r[3],0),O=rows.length,P=PAL();
+if(cur==0){$('#k0').innerHTML=K('Total Sales',inr(S),'All orders')+K('Total Profit',inr(Pf),'Delivered &amp; shipped')+K('Total Orders',num(O),'Orders placed')+K('Total Units Sold',num(Q),'Items')+K('Average Order Value',inr(O?S/O:0),'Sales per order')+K('Profit Margin %',pc(Pf,S),'Profit / Sales');
+const mg=grp(rows,0,D.m.length),ix=mg.map((x,i)=>i).filter(i=>mg[i].o);
+ch('tr','bar',ix.map(i=>ml(D.m[i])),[{label:'Sales',data:ix.map(i=>mg[i].s),borderRadius:3},{type:'line',label:'Profit',data:ix.map(i=>mg[i].p),borderColor:P[1],backgroundColor:P[1],tension:.3,pointRadius:2}]);
+const L=ix.slice(-3),B=ix.slice(-6,-3),sm=a=>a.reduce((t,i)=>t+mg[i].s,0),pm=a=>a.reduce((t,i)=>t+mg[i].p,0);
+$('#i0').innerHTML=B.length?(()=>{const a=(sm(L)/sm(B)-1)*100,b=(pm(L)/pm(B)-1)*100;return `<b>Insight:</b> In the last 3 months sales are <b>${a>=0?'up':'down'} ${Math.abs(a).toFixed(1)}%</b> and profit is <b>${b>=0?'up':'down'} ${Math.abs(b).toFixed(1)}%</b> compared with the 3 months before. ${a>=0&&b>=0?'The business is improving.':a<0&&b<0?'Both sales and profit are declining.':'Sales and profit are moving in different directions.'}`})():'<b>Insight:</b> Select a wider period to see the trend over time.'}
+if(cur==1){const c=grp(rows,1,D.c.length),o=srt(c,'s'),L=o.map(i=>D.c[i]);ch('cs','bar',L,[{label:'Sales',data:o.map(i=>c[i].s),multi:1,borderRadius:4}]);ch('cp','bar',L,[{label:'Profit',data:o.map(i=>c[i].p),multi:1,borderRadius:4}]);ch('cu','doughnut',L,[{label:'Units',data:o.map(i=>c[i].q)}],{n:1});
+const m=o.slice().sort((i,j)=>c[j].p/c[j].s-c[i].p/c[i].s);$('#i1').innerHTML=o.length?`<b>Insight:</b> <b>${D.c[o[0]]}</b> leads with ${inr(c[o[0]].s)} sales (${pc(c[o[0]].s,S)} of total). Best margin: <b>${D.c[m[0]]}</b> (${pc(c[m[0]].p,c[m[0]].s)}); lowest margin: <b>${D.c[m[m.length-1]]}</b> (${pc(c[m[m.length-1]].p,c[m[m.length-1]].s)}).`:'No data for these filters.';
+const p=grp(rows,2,D.p.length),t=srt(p,'s'),lw=t.slice().sort((i,j)=>p[i].p/p[i].s-p[j].p/p[j].s).slice(0,5);$('#topProducts').innerHTML=prodList(p,t.slice(0,10),t.length?p[t[0]].s:0);$('#lw').innerHTML=prodList(p,lw,t.length?p[t[0]].s:0).replace(/class="rk"/g,'class="rk" style="background:var(--bad);color:#fff"')}
+if(cur==2){const g=grp(rows,8,D.s.length),n=s=>g[D.s.indexOf(s)]||{o:0,s:0},de=n('Delivered'),sh=n('Shipped'),re=n('Returned'),ca=n('Cancelled');
+$('#k2').innerHTML=K('Delivered Orders',num(de.o),pc(de.o,O)+' of orders')+K('Shipped Orders',num(sh.o),'On the way')+K('Returned Orders',num(re.o),inr(re.s)+' sales')+K('Cancelled Orders',num(ca.o),inr(ca.s)+' sales')+K('Return Rate %',pc(re.o,O),'Returned / Orders')+K('Cancellation Rate %',pc(ca.o,O),'Cancelled / Orders');
+$('#i2').innerHTML=`<b>Insight:</b> Returns and cancellations together lost <b>${inr(re.s+ca.s)}</b> of sales, which is <b>${pc(re.s+ca.s,S)}</b> of total sales value (${pc(re.o+ca.o,O)} of orders).`;
+const sc={Delivered:P[2],Shipped:P[1],Returned:P[3],Cancelled:'#b12704'};ch('os','doughnut',D.s,[{label:'Orders',data:g.map(x=>x.o),backgroundColor:D.s.map(s=>sc[s])}],{n:1});
+const c=D.c.map((_,i)=>({r:0,x:0,o:0}));rows.forEach(r=>{const z=c[r[1]];z.o++;if(D.s[r[8]]=='Returned')z.r++;if(D.s[r[8]]=='Cancelled')z.x++});
+ch('rc','bar',D.c,[{label:'Returned',data:c.map(z=>z.r),backgroundColor:P[3],borderRadius:3},{label:'Cancelled',data:c.map(z=>z.x),backgroundColor:'#b12704',borderRadius:3}],{n:1});
+$('#rt').innerHTML='<table><tr><th>Category</th><th>Orders</th><th>Returned</th><th>Return %</th><th>Cancelled</th><th>Cancel %</th></tr>'+c.map((z,i)=>z.o?`<tr><td>${D.c[i]}</td><td>${num(z.o)}</td><td>${z.r}</td><td><span class="${z.r/z.o>.06?'bd':'ok'}">${pc(z.r,z.o)}</span></td><td>${z.x}</td><td><span class="${z.x/z.o>.06?'bd':'ok'}">${pc(z.x,z.o)}</span></td></tr>`:'').join('')+'</table>'}
+if(cur==3){const y=grp(rows,6,D.y.length),f=grp(rows,7,D.f.length),t=grp(rows,9,D.t.length),yo=srt(y,'s'),fo=srt(f,'s');
+ch('ps','doughnut',yo.map(i=>D.y[i]),[{label:'Sales',data:yo.map(i=>y[i].s)}]);ch('pp','bar',yo.map(i=>D.y[i]),[{label:'Profit',data:yo.map(i=>y[i].p),multi:1,borderRadius:4}]);
+ch('fs','doughnut',fo.map(i=>D.f[i]),[{label:'Sales',data:fo.map(i=>f[i].s)}]);ch('fp','bar',fo.map(i=>D.f[i]),[{label:'Profit',data:fo.map(i=>f[i].p),multi:1,borderRadius:4}]);
+const to=srt(t,SM),k={s:'Sales',p:'Profit',o:'Orders'}[SM];ch('st','bar',to.map(i=>D.t[i]),[{label:k,data:to.map(i=>t[i][SM]),multi:1,borderRadius:4}],{h:1,n:SM=='o'});
+const mx=to.length?t[to[0]].s:0;$('#stt').innerHTML='<table><tr><th>State</th><th>Sales</th><th>Profit</th><th>Orders</th></tr>'+srt(t,'s').map(i=>`<tr><td>${D.t[i]}</td><td>${inr(t[i].s)}</td><td>${inr(t[i].p)}</td><td>${num(t[i].o)}</td></tr>`).join('')+'</table>';
+$('#i3').innerHTML=yo.length?`<b>Insight:</b> Top market is <b>${D.t[srt(t,'s')[0]]}</b> (${pc(t[srt(t,'s')[0]].s,S)} of sales). <b>${D.y[yo[0]]}</b> is the most used payment method (${pc(y[yo[0]].s,S)} of sales) and <b>${D.f[fo[0]]}</b> is the leading fulfilment channel (${pc(f[fo[0]].s,S)}).`:'No data for these filters.'}}
+
+const HC=new WeakMap,H=r=>HC.get(r)||(s=>(HC.set(r,s),s))((D.p[r[2]]+' '+D.c[r[1]]+' '+D.t[r[9]]+' '+D.y[r[6]]+' '+D.f[r[7]]+' '+D.s[r[8]]).toLowerCase());
+const SEL={y:'#fY',c:'#fC',t:'#fS',p:'#fP',f:'#fF',q:'#q'},NM={y:'Year',c:'Category',t:'State',p:'Payment',f:'Fulfilment',q:'Search'};
+const dflt=k=>k=='y'?'all':k=='q'?'':-1;
+function clr(k){F[k]=dflt(k);$(SEL[k]).value=dflt(k);draw()}
+$('#q').setAttribute('list','pl');$('#q').insertAdjacentHTML('afterend','<datalist id="pl">'+D.p.map(x=>'<option value="'+x+'">').join('')+'</datalist>');
+const go=()=>{F.q=$('#q').value.trim().toLowerCase().replace(/\s+/g,' ');if(F.q)cur=1;draw();window.scrollTo({top:0,behavior:'smooth'})};
+$('#q').oninput=e=>{F.q=e.target.value.trim().toLowerCase().replace(/\s+/g,' ');draw()};$('#q').onkeydown=e=>{if(e.key=='Enter')go()};$('.sb button').onclick=go;
+$('#ys').onclick=e=>{const b=e.target.closest('button');if(b){F.y=b.dataset.y;$('#fY').value=F.y;draw()}};
+$('#af').onclick=e=>{const k=e.target.dataset.k;if(k)clr(k);if(e.target.id=='rs2')$('#rs').click()};
+const _d=draw;draw=function(){_d();
+$('#ys').innerHTML=['all','2024','2025','2026'].map(y=>{const b=filt(1).filter(r=>y=='all'||D.m[r[0]].startsWith(y)),s=b.reduce((a,r)=>a+r[4],0);return `<button data-y="${y}" class="${F.y==y?'on':''}"><small>${y=='all'?'All years':'Year '+y}</small><b>${inr(s)}</b><small>${num(b.length)} orders</small></button>`}).join('');
+const ch=Object.keys(SEL).filter(k=>F[k]!==dflt(k)).map(k=>`<span data-k="${k}" title="Click to remove">${NM[k]}: ${k=='y'?F.y:k=='q'?'\u201C'+F.q+'\u201D':D[{c:'c',t:'t',p:'y',f:'f'}[k]][F[k]]} &#10005;</span>`);
+const A=$('#af');A.className='af'+(ROWS.length?'':' em');
+A.innerHTML=ROWS.length?'<b>Showing:</b> '+(ch.length?ch.join(''):'all data (no filters)'):'&#9888; No orders match these filters. <button id="rs2">Reset all filters</button>'+ch.join('');
+if(document.body.animate)document.querySelectorAll('section.on .kp,section.on .ins,section.on .c').forEach(e=>e.animate([{opacity:.25,transform:'translateY(8px)'},{opacity:1,transform:'none'}],{duration:350}))};
+
+const SECS=[{t:'Overall Sales & Profit Performance',q:'How is the business performing overall?',o:[['Total Sales','s'],['Total Profit','p'],['Total Orders','o'],['Total Units Sold','q'],['Average Order Value','a'],['Profit Margin %','m'],['Monthly Sales & Profit Trend','tr']]},
+{t:'Category & Product Performance',q:'Which products and categories are driving the business?',o:[['Category-wise Sales','s','c'],['Category-wise Profit','p','c'],['Category-wise Units Sold','q','c'],['Top 10 Products by Sales','top']]},
+{t:'Order Status & Revenue Loss',q:'How many orders are successfully completed and how many are being lost?',o:[['Delivered Orders','del'],['Shipped Orders','shp'],['Returned Orders','ret'],['Cancelled Orders','can'],['Return Rate %','rr'],['Cancellation Rate %','cr'],['Category-wise Returns & Cancellations','rc']]},
+{t:'Payment, Fulfilment & Geographic Performance',q:'Which payment methods, fulfilment methods and states are generating business?',o:[['Sales by Payment Method','s','p'],['Profit by Payment Method','p','p'],['Sales by Fulfilment Method','s','f'],['Profit by Fulfilment Method','p','f'],['State-wise Sales','s','t'],['State-wise Profit','p','t'],['State-wise Orders','o','t']]}];
+const DIMS={mo:'Month',yr:'Year',c:'Category',t:'State',p:'Payment',f:'Fulfilment'},FKEY={yr:'y',c:'c',t:'t',p:'p',f:'f'};let OPT=-1,DM='mo',AFTER=null;
+const Z=()=>({s:0,p:0,o:0,q:0,d:0,h:0,r:0,x:0});
+function acc(rows,kf){const M=new Map;rows.forEach(r=>{const k=kf(r);let a=M.get(k);if(!a){a=Z();M.set(k,a)}a.s+=r[4];a.p+=r[5];a.o++;a.q+=r[3];const st=D.s[r[8]];if(st=='Delivered')a.d++;else if(st=='Shipped')a.h++;else if(st=='Returned')a.r++;else a.x++});return M}
+const KF={mo:r=>r[0],yr:r=>D.m[r[0]].slice(0,4),c:r=>r[1],t:r=>r[9],p:r=>r[6],f:r=>r[7]},KL=(d,k)=>d=='mo'?ml(D.m[k]):d=='yr'?k:D[{c:'c',t:'t',p:'y',f:'f'}[d]][k];
+const MV={s:a=>a.s,p:a=>a.p,o:a=>a.o,q:a=>a.q,a:a=>a.o?a.s/a.o:0,m:a=>a.s?a.p/a.s*100:0,del:a=>a.d,shp:a=>a.h,ret:a=>a.r,can:a=>a.x,rr:a=>a.o?a.r/a.o*100:0,cr:a=>a.o?a.x/a.o*100:0};
+const pf=v=>v.toFixed(1)+'%',FM={s:inr,p:inr,a:inr,m:pf,rr:pf,cr:pf},fm=m=>FM[m]||num,ADD=['s','p','o','q','del','shp','ret','can'];
+function ent(rows,d){const E=[...acc(rows,KF[d])].map(([k,a])=>({k,l:KL(d,k),a}));return d=='mo'||d=='yr'?E.sort((x,y)=>(x.k>y.k)-(x.k<y.k)):E}
+const tile=(at,n,t,big,sub)=>`<button class="tile" ${at}><span class="tn">${n}</span><b>${t}</b><em>${big}</em><small>${sub}</small><span class="op">Open &#9654;</span></button>`;
+const top1=(rows,d,m)=>{const E=ent(rows,d).sort((x,y)=>MV[m](y.a)-MV[m](x.a));return E[0]?E[0].l:'-'};
+function bc(){const S=cur>=0?SECS[cur]:null;return `<div class="bc"><button class="bkb" data-act="back">&#9664; Back</button><a data-act="home">Home</a>`+(S?` &rsaquo; <a data-sec="${cur}">${S.t}</a>`:'')+(OPT>=0?` &rsaquo; <b>${S.o[OPT][0]}</b>`:'')+'</div>'}
+function homeV(T,rows){const I=[[inr(T.s),'Profit margin '+pf(MV.m(T))],[top1(rows,'c','s'),'Top category by sales'],[pf(MV.rr(T)+MV.cr(T)),'Orders lost to returns and cancellations'],[top1(rows,'t','s'),'Top state by sales']];
+return `<div class="st1"><h2>Choose an option to open</h2><div class="mu">Click any card. Its details open on the next page, and you can keep clicking to go deeper.</div></div><div class="tl big">`+SECS.map((s,i)=>tile(`data-sec="${i}"`,i+1,s.t,I[i][0],I[i][1]+'. '+s.q)).join('')+'</div>'}
+function pv(o,T,rows){const m=o[1],d=o[2];if(m=='tr')return inr(T.s)+' sales';if(m=='top'){const p=grp(rows,2,D.p.length),t=srt(p,'s');return t.length?D.p[t[0]]:'-'}if(m=='rc')return num(T.r+T.x)+' orders lost';if(d)return 'Top: '+top1(rows,d,m);return fm(m)(MV[m](T))}
+function menuV(T,rows){const S=SECS[cur];return bc()+`<div class="st1"><h2>${S.t}</h2><div class="mu">${S.q} Click an option to open its details.</div></div><div class="tl">`+S.o.map((o,j)=>tile(`data-opt="${j}"`,j+1,o[0],pv(o,T,rows),'')).join('')+'</div>'}
+const head=(t,s,b)=>`<div class="dh"><div><h2>${t}</h2><div class="mu">${s}</div></div><div class="bgv">${b}</div></div>`;
+function cc(type,labels,sets,f){CH.dt&&CH.dt.destroy();const P=PAL();sets.forEach((s,i)=>{s.backgroundColor=s.backgroundColor||P[i%5];s.borderColor=s.borderColor||P[i%5]});
+CH.dt=new Chart($('#dt'),{type,data:{labels,datasets:sets},options:{responsive:true,maintainAspectRatio:false,color:cv('--mu'),plugins:{legend:{display:sets.length>1,position:'bottom'},tooltip:{callbacks:{label:c=>' '+(c.dataset.label?c.dataset.label+': ':'')+f(c.parsed.y)}}},scales:{x:{grid:{display:false}},y:{ticks:{callback:v=>f(v)},grid:{color:cv('--ln')}}}}})}
+function detV(T,rows){const S=SECS[cur],o=S.o[OPT],m=o[1];AFTER=null;
+const nav=`<div class="pn"><button data-opt="${OPT-1}" ${OPT?'':'disabled'}>&#9664; Previous option</button><button data-opt="${OPT+1}" ${OPT<S.o.length-1?'':'disabled'}>Next option &#9654;</button></div>`,card=(t,x)=>`<div class="c"><h3>${t}</h3>${x}</div>`;
+if(!rows.length)return bc()+head(o[0],S.t,'-')+card('No data','No orders match the current filters. Use Reset filters above.')+nav;
+if(m=='top'){const p=grp(rows,2,D.p.length),t=srt(p,'s'),lw=t.slice().sort((i,j)=>p[i].p/p[i].s-p[j].p/p[j].s).slice(0,5),mx=t.length?p[t[0]].s:0;
+return bc()+head(o[0],S.t,inr(T.s)+' total sales')+`<div class="g two">${card('Top 10 Products by Sales',prodList(p,t.slice(0,10),mx))}${card('Needs attention (lowest profit margin)',prodList(p,lw,mx))}</div>`+nav}
+if(m=='rc'){const E=ent(rows,'c').sort((x,y)=>(y.a.r+y.a.x)-(x.a.r+x.a.x));AFTER=()=>cc('bar',E.map(e=>e.l),[{label:'Returned',data:E.map(e=>e.a.r),borderRadius:4},{label:'Cancelled',data:E.map(e=>e.a.x),borderRadius:4}],num);
+return bc()+head(o[0],S.t,num(T.r+T.x)+' orders lost')+`<div class="ins"><b>Insight:</b> Most orders are lost in <b>${E[0].l}</b> (${num(E[0].a.r+E[0].a.x)} returned or cancelled). Overall return rate ${pf(MV.rr(T))}, cancellation rate ${pf(MV.cr(T))}.</div><div class="c"><div class="ht"><canvas id="dt"></canvas></div></div><div class="c"><table><tr><th>Category</th><th>Orders</th><th>Returned</th><th>Return %</th><th>Cancelled</th><th>Cancel %</th></tr>`+E.map(e=>`<tr><td>${e.l}</td><td>${num(e.a.o)}</td><td>${e.a.r}</td><td>${pf(MV.rr(e.a))}</td><td>${e.a.x}</td><td>${pf(MV.cr(e.a))}</td></tr>`).join('')+`</table></div>`+nav}
+const d=m=='tr'?'mo':DM,E=ent(rows,d),mm=m=='tr'?'s':m,f=fm(mm),vals=E.map(e=>MV[mm](e.a)),tot=ADD.includes(mm)?vals.reduce((a,b)=>a+b,0):0,time=d=='mo'||d=='yr';
+const ord=E.map((e,i)=>i);if(!time)ord.sort((i,j)=>vals[j]-vals[i]);const hi=ord.slice().sort((i,j)=>vals[j]-vals[i]),a=hi[0],z=hi[hi.length-1];
+const chips=m=='tr'?'':'<div class="chips"><span>View by:</span>'+Object.keys(DIMS).map(k=>`<button data-dim="${k}" class="${k==d?'on':''}">${DIMS[k]}</button>`).join('')+'</div>';
+let ins=`Highest ${DIMS[d].toLowerCase()}: <b>${E[a].l}</b> (${f(vals[a])}${tot?', '+pc(vals[a],tot)+' of total':''}). Lowest: <b>${E[z].l}</b> (${f(vals[z])}).`,tb;
+if(m=='tr'){const L=E.slice(-3),B=E.slice(-6,-3),sm=(x,k)=>x.reduce((t,e)=>t+e.a[k],0);if(B.length){const u=(sm(L,'s')/sm(B,'s')-1)*100,v=(sm(L,'p')/sm(B,'p')-1)*100;ins=`Last 3 months: sales <b>${u>=0?'up':'down'} ${Math.abs(u).toFixed(1)}%</b>, profit <b>${v>=0?'up':'down'} ${Math.abs(v).toFixed(1)}%</b> versus the 3 months before.`}
+tb='<table><tr><th>Month</th><th>Sales</th><th>Profit</th><th>Margin</th></tr>'+E.map(e=>`<tr><td>${e.l}</td><td>${inr(e.a.s)}</td><td>${inr(e.a.p)}</td><td>${pf(MV.m(e.a))}</td></tr>`).join('')+'</table>';
+AFTER=()=>cc('bar',E.map(e=>e.l),[{label:'Sales',data:E.map(e=>e.a.s),borderRadius:3},{type:'line',label:'Profit',data:E.map(e=>e.a.p),tension:.3,pointRadius:2}],inr)}
+else{const cl=FKEY[d]?' class="cl" title="Click to drill into this"':'';tb=`<table><tr><th>${DIMS[d]}</th><th>${o[0]}</th>${tot?'<th>Share</th>':''}<th>Orders</th></tr>`+ord.map(i=>`<tr data-k="${E[i].k}"${cl}><td>${E[i].l}</td><td>${f(vals[i])}</td>${tot?`<td>${pc(vals[i],tot)}</td>`:''}<td>${num(E[i].a.o)}</td></tr>`).join('')+'</table>'+(FKEY[d]?'<div class="tip">Tip: click any row to drill into it. The whole dashboard filters to that item.</div>':'');
+AFTER=()=>cc(time?'line':'bar',ord.map(i=>E[i].l),[{label:o[0],data:ord.map(i=>vals[i]),borderRadius:4,tension:.3}],f)}
+return bc()+head(o[0],S.t,m=='tr'?inr(T.s)+' / '+inr(T.p):f(MV[mm](T)))+`<div class="ins"><b>Insight:</b> ${ins}</div>`+chips+`<div class="g two"><div class="c"><div class="ht" style="height:340px"><canvas id="dt"></canvas></div></div><div class="c" style="max-height:420px;overflow:auto">${tb}</div></div>`+nav}
+function render2(){const rows=ROWS,T=acc(rows,()=>0).get(0)||Z(),v=$('#v2');
+document.querySelectorAll('#nv button').forEach(b=>b.classList.toggle('on',+b.dataset.i==cur));$('.hero').style.display=cur<0?'':'none';
+v.innerHTML=cur<0?homeV(T,rows):OPT<0?menuV(T,rows):detV(T,rows);if(AFTER&&OPT>=0){AFTER();AFTER=null}
+if(v.animate&&NAVMOVE){v.animate([{opacity:0,transform:'translateX(40px)'},{opacity:1,transform:'none'}],{duration:400,easing:'ease-out'});NAVMOVE=false}}
+let NAVMOVE=false;const mv=()=>{NAVMOVE=true;draw();window.scrollTo({top:0,behavior:'smooth'})};
+$('#v2').onclick=e=>{const t=e.target.closest('[data-sec],[data-opt],[data-dim],[data-act],tr.cl');if(!t||t.disabled)return;const d=t.dataset;
+if(d.dim){DM=d.dim;draw();return}
+if(t.tagName=='TR'){const key=FKEY[DM];if(!key)return;F[key]=key=='y'?d.k:+d.k;$(SEL[key]).value=F[key];draw();return}
+if(d.act=='home'){cur=-1;OPT=-1}else if(d.act=='back'){if(OPT>=0)OPT=-1;else cur=-1}else if(d.sec!==undefined){cur=+d.sec;OPT=-1}else if(d.opt!==undefined){OPT=+d.opt;DM=SECS[cur].o[OPT][2]||'mo'}
+mv()};
+$('#nv').insertAdjacentHTML('afterbegin','<button data-i="-1"><span class="sn">&#8962;</span>Home</button>');
+$('#nv').onclick=e=>{const b=e.target.closest('button');if(b){cur=+b.dataset.i;OPT=-1;mv()}const t=e.target.dataset.t;if(t){document.documentElement.dataset.th=t;draw()}};
+const go2=()=>{F.q=$('#q').value.trim().toLowerCase().replace(/\s+/g,' ');if(F.q){cur=1;OPT=3}mv()};$('#q').onkeydown=e=>{if(e.key=='Enter')go2()};$('.sb button').onclick=go2;
+const _o=draw;draw=function(){const c=cur;cur=-1;_o();cur=c;render2()};
+cur=-1;draw();
+
+const THS=[['amazon','Amazon Orange',['#ff9900','#146eb4','#067d62','#c7511f','#8b5cf6']],['ocean','Ocean Blue',['#00b4d8','#0077b6','#2a9d8f','#f4a261','#7b2cbf']],['sunset','Sunset Purple',['#ff6d00','#e5383b','#9d4edd','#ffb703','#f72585']],['forest','Forest Green',['#22c55e','#0ea5e9','#eab308','#f97316','#a855f7']]];
+function thUI(){const c=document.documentElement.dataset.th||'amazon';$('#tmd').style.background=THS.find(t=>t[0]==c)[2][0];
+$('#themePicker').innerHTML='<small>Choose a colour theme</small>'+THS.map(t=>`<button data-th="${t[0]}" class="${t[0]==c?'sel':''}"><span class="sw">${t[2].map(x=>`<i style="background:${x}"></i>`).join('')}</span>${t[1]}<span class="ck">&#10003;</span></button>`).join('')}
+$('#tmb').onclick=e=>{e.stopPropagation();thUI();$('#themePicker').classList.toggle('on')};
+$('#themePicker').onclick=e=>{e.stopPropagation();const b=e.target.closest('button');if(!b)return;document.documentElement.dataset.th=b.dataset.th;try{localStorage.setItem('ath',b.dataset.th)}catch(x){}thUI();$('#themePicker').classList.remove('on');draw()};
+document.addEventListener('click',()=>$('#themePicker').classList.remove('on'));document.addEventListener('keydown',e=>{if(e.key=='Escape')$('#themePicker').classList.remove('on')});
+try{const s=localStorage.getItem('ath');if(s&&THS.some(t=>t[0]==s)){document.documentElement.dataset.th=s;draw()}}catch(x){}thUI();
+
+}
+</script></body></html>
